@@ -9,17 +9,17 @@ import 'package:pigeon/pigeon.dart';
     dartOptions: DartOptions(
     ),
     dartOut: './lib/src/private/pigeon_api.dart',
-    swiftOut: './ios/Classes/Messages.swift',
+    swiftOut: './ios/Classes/SwiftInstallReferrerPigeon.swift',
     kotlinOut: './android/src/main/kotlin/fr/g123k/install_referrer/InstallReferrerPigeon.kt'
   ),
 )
-class IRInstallationReferer {
+class IRInstallationReferrer {
   final IRInstallationType? type;
   final IRInstallationPlatform? installationPlatform;
   final IRPlatform? platform;
   final String? packageName;
 
-  IRInstallationReferer({
+  IRInstallationReferrer({
     this.type,
     this.platform,
     this.installationPlatform,
@@ -56,5 +56,5 @@ enum IRPlatform {
 @HostApi()
 abstract class InstallReferrerInternalAPI {
   @async
-  IRInstallationReferer detectReferrer();
+  IRInstallationReferrer detectReferrer();
 }

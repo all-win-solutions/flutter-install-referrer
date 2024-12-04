@@ -41,8 +41,8 @@ enum IRPlatform {
   android,
 }
 
-class IRInstallationReferer {
-  IRInstallationReferer({
+class IRInstallationReferrer {
+  IRInstallationReferrer({
     this.type,
     this.installationPlatform,
     this.platform,
@@ -66,9 +66,9 @@ class IRInstallationReferer {
     ];
   }
 
-  static IRInstallationReferer decode(Object result) {
+  static IRInstallationReferrer decode(Object result) {
     result as List<Object?>;
-    return IRInstallationReferer(
+    return IRInstallationReferrer(
       type: result[0] as IRInstallationType?,
       installationPlatform: result[1] as IRInstallationPlatform?,
       platform: result[2] as IRPlatform?,
@@ -94,7 +94,7 @@ class _PigeonCodec extends StandardMessageCodec {
     }    else if (value is IRPlatform) {
       buffer.putUint8(131);
       writeValue(buffer, value.index);
-    }    else if (value is IRInstallationReferer) {
+    }    else if (value is IRInstallationReferrer) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
     } else {
@@ -115,7 +115,7 @@ class _PigeonCodec extends StandardMessageCodec {
         final int? value = readValue(buffer) as int?;
         return value == null ? null : IRPlatform.values[value];
       case 132: 
-        return IRInstallationReferer.decode(readValue(buffer)!);
+        return IRInstallationReferrer.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -135,7 +135,7 @@ class InstallReferrerInternalAPI {
 
   final String pigeonVar_messageChannelSuffix;
 
-  Future<IRInstallationReferer> detectReferrer() async {
+  Future<IRInstallationReferrer> detectReferrer() async {
     final String pigeonVar_channelName = 'dev.flutter.pigeon.install_referrer.InstallReferrerInternalAPI.detectReferrer$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
@@ -158,7 +158,7 @@ class InstallReferrerInternalAPI {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (pigeonVar_replyList[0] as IRInstallationReferer?)!;
+      return (pigeonVar_replyList[0] as IRInstallationReferrer?)!;
     }
   }
 }

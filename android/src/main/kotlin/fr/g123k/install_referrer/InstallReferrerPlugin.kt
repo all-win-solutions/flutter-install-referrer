@@ -31,7 +31,7 @@ class InstallReferrerPlugin : FlutterPlugin, InstallReferrerInternalAPI {
         context = null
     }
 
-    override fun detectReferrer(callback: (Result<IRInstallationReferer>) -> Unit) {
+    override fun detectReferrer(callback: (Result<IRInstallationReferrer>) -> Unit) {
         context!!.run {
             when (val installerPackageName = packageManager.getInstallerPackageName(packageName)) {
                 null -> callback(
@@ -127,8 +127,8 @@ class InstallReferrerPlugin : FlutterPlugin, InstallReferrerInternalAPI {
     private fun generateResult(
         type: IRInstallationType,
         platform: IRInstallationPlatform
-    ): IRInstallationReferer {
-        return IRInstallationReferer(
+    ): IRInstallationReferrer {
+        return IRInstallationReferrer(
             type = type,
             installationPlatform = platform,
             packageName = context!!.packageName,

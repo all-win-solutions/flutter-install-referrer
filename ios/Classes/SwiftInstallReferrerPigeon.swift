@@ -91,7 +91,7 @@ enum IRPlatform: Int {
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
-struct IRInstallationReferer {
+struct IRInstallationReferrer {
   var type: IRInstallationType? = nil
   var installationPlatform: IRInstallationPlatform? = nil
   var platform: IRPlatform? = nil
@@ -100,13 +100,13 @@ struct IRInstallationReferer {
 
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
-  static func fromList(_ pigeonVar_list: [Any?]) -> IRInstallationReferer? {
+  static func fromList(_ pigeonVar_list: [Any?]) -> IRInstallationReferrer? {
     let type: IRInstallationType? = nilOrValue(pigeonVar_list[0])
     let installationPlatform: IRInstallationPlatform? = nilOrValue(pigeonVar_list[1])
     let platform: IRPlatform? = nilOrValue(pigeonVar_list[2])
     let packageName: String? = nilOrValue(pigeonVar_list[3])
 
-    return IRInstallationReferer(
+    return IRInstallationReferrer(
       type: type,
       installationPlatform: installationPlatform,
       platform: platform,
@@ -123,7 +123,7 @@ struct IRInstallationReferer {
   }
 }
 
-private class MessagesPigeonCodecReader: FlutterStandardReader {
+private class SwiftInstallReferrerPigeonPigeonCodecReader: FlutterStandardReader {
   override func readValue(ofType type: UInt8) -> Any? {
     switch type {
     case 129:
@@ -145,14 +145,14 @@ private class MessagesPigeonCodecReader: FlutterStandardReader {
       }
       return nil
     case 132:
-      return IRInstallationReferer.fromList(self.readValue() as! [Any?])
+      return IRInstallationReferrer.fromList(self.readValue() as! [Any?])
     default:
       return super.readValue(ofType: type)
     }
   }
 }
 
-private class MessagesPigeonCodecWriter: FlutterStandardWriter {
+private class SwiftInstallReferrerPigeonPigeonCodecWriter: FlutterStandardWriter {
   override func writeValue(_ value: Any) {
     if let value = value as? IRInstallationType {
       super.writeByte(129)
@@ -163,7 +163,7 @@ private class MessagesPigeonCodecWriter: FlutterStandardWriter {
     } else if let value = value as? IRPlatform {
       super.writeByte(131)
       super.writeValue(value.rawValue)
-    } else if let value = value as? IRInstallationReferer {
+    } else if let value = value as? IRInstallationReferrer {
       super.writeByte(132)
       super.writeValue(value.toList())
     } else {
@@ -172,29 +172,29 @@ private class MessagesPigeonCodecWriter: FlutterStandardWriter {
   }
 }
 
-private class MessagesPigeonCodecReaderWriter: FlutterStandardReaderWriter {
+private class SwiftInstallReferrerPigeonPigeonCodecReaderWriter: FlutterStandardReaderWriter {
   override func reader(with data: Data) -> FlutterStandardReader {
-    return MessagesPigeonCodecReader(data: data)
+    return SwiftInstallReferrerPigeonPigeonCodecReader(data: data)
   }
 
   override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-    return MessagesPigeonCodecWriter(data: data)
+    return SwiftInstallReferrerPigeonPigeonCodecWriter(data: data)
   }
 }
 
-class MessagesPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
-  static let shared = MessagesPigeonCodec(readerWriter: MessagesPigeonCodecReaderWriter())
+class SwiftInstallReferrerPigeonPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
+  static let shared = SwiftInstallReferrerPigeonPigeonCodec(readerWriter: SwiftInstallReferrerPigeonPigeonCodecReaderWriter())
 }
 
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol InstallReferrerInternalAPI {
-  func detectReferrer(completion: @escaping (Result<IRInstallationReferer, Error>) -> Void)
+  func detectReferrer(completion: @escaping (Result<IRInstallationReferrer, Error>) -> Void)
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
 class InstallReferrerInternalAPISetup {
-  static var codec: FlutterStandardMessageCodec { MessagesPigeonCodec.shared }
+  static var codec: FlutterStandardMessageCodec { SwiftInstallReferrerPigeonPigeonCodec.shared }
   /// Sets up an instance of `InstallReferrerInternalAPI` to handle messages through the `binaryMessenger`.
   static func setUp(binaryMessenger: FlutterBinaryMessenger, api: InstallReferrerInternalAPI?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""

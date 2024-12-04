@@ -89,7 +89,7 @@ enum class IRPlatform(val raw: Int) {
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class IRInstallationReferer (
+data class IRInstallationReferrer (
   val type: IRInstallationType? = null,
   val installationPlatform: IRInstallationPlatform? = null,
   val platform: IRPlatform? = null,
@@ -97,12 +97,12 @@ data class IRInstallationReferer (
 )
  {
   companion object {
-    fun fromList(pigeonVar_list: List<Any?>): IRInstallationReferer {
+    fun fromList(pigeonVar_list: List<Any?>): IRInstallationReferrer {
       val type = pigeonVar_list[0] as IRInstallationType?
       val installationPlatform = pigeonVar_list[1] as IRInstallationPlatform?
       val platform = pigeonVar_list[2] as IRPlatform?
       val packageName = pigeonVar_list[3] as String?
-      return IRInstallationReferer(type, installationPlatform, platform, packageName)
+      return IRInstallationReferrer(type, installationPlatform, platform, packageName)
     }
   }
   fun toList(): List<Any?> {
@@ -134,7 +134,7 @@ private open class InstallReferrerPigeonPigeonCodec : StandardMessageCodec() {
       }
       132.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          IRInstallationReferer.fromList(it)
+          IRInstallationReferrer.fromList(it)
         }
       }
       else -> super.readValueOfType(type, buffer)
@@ -154,7 +154,7 @@ private open class InstallReferrerPigeonPigeonCodec : StandardMessageCodec() {
         stream.write(131)
         writeValue(stream, value.raw)
       }
-      is IRInstallationReferer -> {
+      is IRInstallationReferrer -> {
         stream.write(132)
         writeValue(stream, value.toList())
       }
@@ -166,7 +166,7 @@ private open class InstallReferrerPigeonPigeonCodec : StandardMessageCodec() {
 
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface InstallReferrerInternalAPI {
-  fun detectReferrer(callback: (Result<IRInstallationReferer>) -> Unit)
+  fun detectReferrer(callback: (Result<IRInstallationReferrer>) -> Unit)
 
   companion object {
     /** The codec used by InstallReferrerInternalAPI. */
@@ -181,7 +181,7 @@ interface InstallReferrerInternalAPI {
         val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.install_referrer.InstallReferrerInternalAPI.detectReferrer$separatedMessageChannelSuffix", codec)
         if (api != null) {
           channel.setMessageHandler { _, reply ->
-            api.detectReferrer{ result: Result<IRInstallationReferer> ->
+            api.detectReferrer{ result: Result<IRInstallationReferrer> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))
