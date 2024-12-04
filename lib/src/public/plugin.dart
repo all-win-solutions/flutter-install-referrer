@@ -11,7 +11,7 @@ class InstallReferrer {
   /// - Package name / app id
   /// - Installation referred
   static Future<InstallationApp> get app async {
-    IRInstallationReferer referrer = await _api.detectReferrer();
+    IRInstallationReferrer referrer = await _api.detectReferrer();
 
     return InstallationApp(
       packageName: referrer.packageName,
@@ -30,7 +30,7 @@ class InstallReferrer {
   }
 
   static InstallationAppReferrer _extractReferrer(
-    IRInstallationReferer referrer,
+    IRInstallationReferrer referrer,
   ) {
     switch (referrer.platform) {
       case IRPlatform.ios:

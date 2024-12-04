@@ -7,15 +7,14 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 
 /** InstallReferrerPlugin */
-class InstallReferrerPlugin : FlutterPlugin, InstallReferrerPigeon.InstallReferrerInternalAPI {
+class InstallReferrerPlugin : FlutterPlugin, InstallReferrerInternalAPI {
 
     var context: Context? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        InstallReferrerPigeon.InstallReferrerInternalAPI.setup(
+        InstallReferrerInternalAPI.setUp(
             flutterPluginBinding.binaryMessenger,
             this
         )
@@ -24,7 +23,7 @@ class InstallReferrerPlugin : FlutterPlugin, InstallReferrerPigeon.InstallReferr
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        InstallReferrerPigeon.InstallReferrerInternalAPI.setup(
+        InstallReferrerInternalAPI.setUp(
             binding.binaryMessenger,
             null
         )
@@ -32,89 +31,108 @@ class InstallReferrerPlugin : FlutterPlugin, InstallReferrerPigeon.InstallReferr
         context = null
     }
 
-    override fun detectReferrer(result: InstallReferrerPigeon.Result<InstallReferrerPigeon.IRInstallationReferer>?) {
+    override fun detectReferrer(callback: (Result<IRInstallationReferrer>) -> Unit) {
         context!!.run {
-            val installerPackageName = packageManager.getInstallerPackageName(packageName)
+            when (val installerPackageName = packageManager.getInstallerPackageName(packageName)) {
+                null -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.DEBUG,
+                            platform = IRInstallationPlatform.MANUALLY,
+                        )
+                    )
+                )
 
-            if (installerPackageName == null) {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.debug,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.manually,
+                "com.amazon" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.AMAZON_APP_STORE,
+                        )
                     )
                 )
-            } else if (installerPackageName.startsWith("com.amazon")) {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.amazonAppStore,
+
+                "com.android.vending" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.GOOGLE_PLAY,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.android.vending") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.googlePlay,
+
+                "com.huawei.appmarket" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.HUAWEI_APP_GALLERY,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.huawei.appmarket") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.huaweiAppGallery,
+
+                "com.sec.android.app.samsungapps" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.SAMSUNG_APP_SHOP,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.sec.android.app.samsungapps") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.samsungAppShop,
+
+                "com.oppo.market" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.OPPO_APP_MARKET,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.oppo.market") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.oppoAppMarket,
+
+                "com.vivo.appstore" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.VIVO_APP_STORE,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.vivo.appstore") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.vivoAppStore,
+
+                "com.xiaomi.mipicks" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.APP_STORE,
+                            platform = IRInstallationPlatform.XIAOMI_APP_STORE,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.xiaomi.mipicks") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.appStore,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.xiaomiAppStore,
+
+                "com.google.android.packageinstaller" -> callback(
+                    Result.success(
+                        generateResult(
+                            type = IRInstallationType.UNKNOWN,
+                            platform = IRInstallationPlatform.MANUALLY,
+                        )
                     )
                 )
-            } else if (installerPackageName == "com.google.android.packageinstaller") {
-                result?.success(
-                    generateResult(
-                        type = InstallReferrerPigeon.IRInstallationType.unknown,
-                        platform = InstallReferrerPigeon.IRInstallationPlatform.manually,
-                    )
+
+                else -> callback(
+                    Result.failure(Exception("Unknown installer $installerPackageName"))
                 )
-            } else {
-                result?.error(Exception("Unknown installer $installerPackageName"))
             }
+
         }
 
     }
 
     private fun generateResult(
-        type: InstallReferrerPigeon.IRInstallationType,
-        platform: InstallReferrerPigeon.IRInstallationPlatform
-    ): InstallReferrerPigeon.IRInstallationReferer {
-        return InstallReferrerPigeon.IRInstallationReferer().apply {
-            this.type = type
-            this.packageName = context!!.packageName
-            this.installationPlatform = platform
-            this.platform = InstallReferrerPigeon.IRPlatform.android
-        }
+        type: IRInstallationType,
+        platform: IRInstallationPlatform
+    ): IRInstallationReferrer {
+        return IRInstallationReferrer(
+            type = type,
+            installationPlatform = platform,
+            packageName = context!!.packageName,
+            platform = IRPlatform.ANDROID
+        )
     }
 }
