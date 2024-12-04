@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/install_referrer/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  install_referrer: 1bde9acf8b1bfd372706454234444a01b5732bcf
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  install_referrer: a91ff0e739d82f959e5efaf2e1a784f68c4101b4
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.15.2

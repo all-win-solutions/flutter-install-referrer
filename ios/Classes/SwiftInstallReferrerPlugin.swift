@@ -12,30 +12,30 @@ private var isDebug: Bool {
 private let isFromTestFlight = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
 
 
-public class SwiftInstallReferrerPlugin: NSObject, FlutterPlugin, IRInstallReferrerInternalAPI {
+class SwiftInstallReferrerPlugin: NSObject, FlutterPlugin, InstallReferrerInternalAPI {
     
-    public static func register(with registrar: FlutterPluginRegistrar) {
+    static func register(with registrar: FlutterPluginRegistrar) {
         let messenger : FlutterBinaryMessenger = registrar.messenger()
-        let api : IRInstallReferrerInternalAPI & NSObjectProtocol = SwiftInstallReferrerPlugin.init()
-        IRInstallReferrerInternalAPISetup(messenger, api);
+        let api : InstallReferrerInternalAPI & NSObjectProtocol = SwiftInstallReferrerPlugin.init()
+        InstallReferrerInternalAPISetup.setUp(binaryMessenger: messenger, api: api);
     }
     
-    public func detectReferrer(completion: @escaping (IRIRInstallationReferer?, FlutterError?) -> Void) {
-        let result = IRIRInstallationReferer.init()
-        result.platform = IRIRPlatform.ios
+    func detectReferrer(completion: @escaping (Result<IRInstallationReferer, Error>) -> Void) {
+        var result = IRInstallationReferer.init()
+        result.platform = IRPlatform.ios
         result.packageName = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
         
         if (isDebug) {
-            result.type = IRIRInstallationType.debug
-            result.installationPlatform = IRIRInstallationPlatform.manually
+            result.type = IRInstallationType.debug
+            result.installationPlatform = IRInstallationPlatform.manually
         } else if (isFromTestFlight) {
-            result.type = IRIRInstallationType.test
-            result.installationPlatform = IRIRInstallationPlatform.appleTestflight
+            result.type = IRInstallationType.test
+            result.installationPlatform = IRInstallationPlatform.appleTestflight
         } else {
-            result.type = IRIRInstallationType.appStore
-            result.installationPlatform = IRIRInstallationPlatform.appleAppStore
+            result.type = IRInstallationType.appStore
+            result.installationPlatform = IRInstallationPlatform.appleAppStore
         }
         
-        completion(result, nil)
+        completion(.success(result))
     }
 }

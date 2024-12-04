@@ -2,21 +2,15 @@ import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(
   PigeonOptions(
-    javaOptions: JavaOptions(
-      className: 'InstallReferrerPigeon',
-      package: 'fr.g123k.install_referrer',
+    kotlinOptions: KotlinOptions(
+      package: 'fr.g123k.install_referrer'
     ),
-    objcOptions: ObjcOptions(
-      prefix: 'IR',
-    ),
+    swiftOptions: SwiftOptions(),
     dartOptions: DartOptions(
-      isNullSafe: true,
     ),
     dartOut: './lib/src/private/pigeon_api.dart',
-    objcHeaderOut: './ios/Classes/Messages.h',
-    objcSourceOut: './ios/Classes/Messages.m',
-    javaOut:
-        './android/src/main/java/fr/g123k/install_referrer/InstallReferrerPigeon.java',
+    swiftOut: './ios/Classes/Messages.swift',
+    kotlinOut: './android/src/main/kotlin/fr/g123k/install_referrer/InstallReferrerPigeon.kt'
   ),
 )
 class IRInstallationReferer {
