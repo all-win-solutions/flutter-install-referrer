@@ -1,6 +1,6 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint install_referrer.podspec` to validate before publishing.
+# Run `pod lib lint flutter_install_referrer.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_install_referrer'
@@ -13,7 +13,7 @@ Detect from where your application was installed (Google Play, App Store, TestFl
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'All-Win Solutions' => 'info@all-win.solutions' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'flutter_install_referrer/Sources/flutter_install_referrer/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
 

@@ -1,6 +1,6 @@
 # flutter_install_referrer
 
-[![Pub](https://img.shields.io/pub/v/flutter_install_referrer.svg)](https://pub.dartlang.org/packages/install_referrer)
+[![Pub](https://img.shields.io/pub/v/flutter_install_referrer.svg)](https://pub.dartlang.org/packages/flutter_install_referrer)
 
 A Flutter plugin that allows you to detect how your application was installed.
 
@@ -16,7 +16,7 @@ Feel free to open a PR to support new platforms.
 
 ## Installation
 
-1. Add `flutter_install_referrer: ^1.2.1` to your `pubspec.yaml` file.
+1. Add `flutter_install_referrer: ^2.0.0` to your `pubspec.yaml` file.
 2. Import `import 'package:flutter_install_referrer/flutter_install_referrer.dart';`
 3. Get the value by invoking the `Future` `InstallReferrer.referrer`
 

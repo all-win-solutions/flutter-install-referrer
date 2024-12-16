@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_install_referrer (1.0.0):
+  - flutter_install_referrer (2.0.0):
     - Flutter
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_install_referrer: 59b74254a4b46ee79c31e9c366b7977efb5f0231
+  flutter_install_referrer: d0a9791622999209853f9cccd27aff43564c774d
 
 PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
 

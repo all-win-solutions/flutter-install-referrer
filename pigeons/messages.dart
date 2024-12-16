@@ -8,7 +8,7 @@ import 'package:pigeon/pigeon.dart';
       swiftOptions: SwiftOptions(),
       dartOptions: DartOptions(),
       dartOut: './lib/src/private/pigeon_api.dart',
-      swiftOut: './ios/Classes/SwiftInstallReferrerPigeon.swift',
+      swiftOut: 'ios/flutter_install_referrer/Sources/flutter_install_referrer/SwiftInstallReferrerPigeon.swift',
       kotlinOut:
           './android/src/main/kotlin/com/allwinsolutions/flutter_install_referrer/InstallReferrerPigeon.kt'),
 )
