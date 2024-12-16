@@ -1,4 +1,4 @@
-package fr.g123k.install_referrer
+package com.allwinsolutions.flutter_install_referrer
 
 import android.content.Context
 import androidx.annotation.NonNull

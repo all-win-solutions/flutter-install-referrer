@@ -1,4 +1,4 @@
-import 'package:install_referrer/install_referrer.dart';
+import 'package:flutter_install_referrer/flutter_install_referrer.dart';
 
 import '../private/pigeon_api.dart';
 

@@ -3,15 +3,15 @@
 # Run `pod lib lint install_referrer.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'install_referrer'
-  s.version          = '1.0.0'
+  s.name             = 'flutter_install_referrer'
+  s.version          = '2.0.0'
   s.summary          = 'Detect from where your application was installed (Google Play, App Store, TestFlight…)'
   s.description      = <<-DESC
 Detect from where your application was installed (Google Play, App Store, TestFlight…)
                        DESC
-  s.homepage         = 'https://daad.mobi'
+  s.homepage         = 'https://all-win-solutions.com/'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'DAAD' => 'moi@edouard-marquez.me' }
+  s.author           = { 'All-Win Solutions' => 'info@all-win.solutions' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
