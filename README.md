@@ -4,19 +4,19 @@
 
 A Flutter plugin that allows you to detect how your application was installed.
 
-This plugin was originally developed by [daad.mobi](https://pub.dev/packages/install_referrer) and you can find the upstream repo [here](https://github.com/g123k/flutter_plugin_install_referrer)
-but was descontinued without being updated in two years, so this package forked and rewrited the project, migrating from Java/Objective-C to modern Kotlin & Swift. Also support of Swift Package Manager is added
+This plugin was originally developed by [daad.mobi](https://pub.dev/packages/install_referrer), and you can find the upstream repository [here](https://github.com/g123k/flutter_plugin_install_referrer).
+However, it was discontinued and had not been updated for two years. This new package forks and rewrites the project, migrating the old Java/Objective-C code to modern Kotlin and Swift. Additionally, support for Swift Package Manager has been added.
 
 ## Supported platforms
 
 - Android: ✅
 - iOS: ✅
 
-Feel free to open a PR to support new platforms.
+Feel free to open a PR to add support for new platforms or suggest changes.
 
 ## Installation
 
-1. Add `flutter_install_referrer: ^2.0.0` to your `pubspec.yaml` file.
+1. Add `flutter_install_referrer: ^2.0.1` to your `pubspec.yaml` file.
 2. Import `import 'package:flutter_install_referrer/flutter_install_referrer.dart';`
 3. Get the value by invoking the `Future` `InstallReferrer.referrer`
 
