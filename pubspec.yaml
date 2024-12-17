@@ -4,8 +4,8 @@ version: 2.0.0
 homepage: https://github.com/all-win-solutions/flutter-install-referrer
 
 environment:
-  sdk: ">=3.4.3 <4.0.0"
-  flutter: ">=3.24.0"
+  sdk: ">=3.5.4 <4.0.0"
+  flutter: ">=3.24.5"
 
 dependencies:
   flutter:
@@ -15,7 +15,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  pigeon: ^22.6.2
+  pigeon: ^22.5.0
 
 flutter:
   plugin:
