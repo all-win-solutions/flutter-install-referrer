@@ -136,7 +136,7 @@ class InstallReferrerInternalAPI {
   final String pigeonVar_messageChannelSuffix;
 
   Future<IRInstallationReferrer> detectReferrer() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.install_referrer.InstallReferrerInternalAPI.detectReferrer$pigeonVar_messageChannelSuffix';
+    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,

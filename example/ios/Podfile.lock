@@ -1,22 +1,16 @@
 PODS:
   - Flutter (1.0.0)
-  - install_referrer (1.0.0):
-    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - install_referrer (from `.symlinks/plugins/install_referrer/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  install_referrer:
-    :path: ".symlinks/plugins/install_referrer/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  install_referrer: a91ff0e739d82f959e5efaf2e1a784f68c4101b4
 
 PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

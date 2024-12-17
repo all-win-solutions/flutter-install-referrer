@@ -1,15 +1,15 @@
 name: install_referrer_example
-description: Demonstrates how to use the install_referrer plugin.
+description: Demonstrates how to use the flutter_install_referrer plugin.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ">=3.4.3 <4.0.0"
+  sdk: ">=3.5.4 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  install_referrer:
+  flutter_install_referrer:
     path: ../
 
 dev_dependencies:

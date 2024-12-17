@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:install_referrer/install_referrer.dart';
+import 'package:flutter_install_referrer/flutter_install_referrer.dart';
 
 void main() {
   runApp(const MyApp());

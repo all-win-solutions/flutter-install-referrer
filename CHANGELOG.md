@@ -1,3 +1,9 @@
+## 2.0.0
+
+* Migrated from Java/Objective-C to modern Kotlin/Swift
+* Added Swift Package Manager support
+* Updated dependencies & Android build system
+
 ## 1.2.1
 
 * Oppo App Market, Vivo App Store & Xiaomi App Store now supported

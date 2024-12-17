@@ -1,6 +1,6 @@
 # install_referrer_example
 
-Demonstrates how to use the install_referrer plugin.
+Demonstrates how to use the flutter_install_referrer plugin.
 
 ## Getting Started
 

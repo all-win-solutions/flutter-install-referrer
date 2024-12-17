@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:install_referrer/install_referrer.dart';
+import 'package:flutter_install_referrer/flutter_install_referrer.dart';
 
 /// Obtain the result of [InstallReferrer.app] within a WidgetBuilder like
 class InstallReferrerDetectorBuilder extends StatelessWidget {

@@ -198,7 +198,7 @@ class InstallReferrerInternalAPISetup {
   /// Sets up an instance of `InstallReferrerInternalAPI` to handle messages through the `binaryMessenger`.
   static func setUp(binaryMessenger: FlutterBinaryMessenger, api: InstallReferrerInternalAPI?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
-    let detectReferrerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.install_referrer.InstallReferrerInternalAPI.detectReferrer\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let detectReferrerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       detectReferrerChannel.setMessageHandler { _, reply in
         api.detectReferrer { result in

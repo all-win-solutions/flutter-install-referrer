@@ -2,7 +2,7 @@
 // See also: https://pub.dev/packages/pigeon
 @file:Suppress("UNCHECKED_CAST", "ArrayInDataClass")
 
-package fr.g123k.install_referrer
+package com.allwinsolutions.flutter_install_referrer
 
 import android.util.Log
 import io.flutter.plugin.common.BasicMessageChannel
@@ -178,7 +178,7 @@ interface InstallReferrerInternalAPI {
     fun setUp(binaryMessenger: BinaryMessenger, api: InstallReferrerInternalAPI?, messageChannelSuffix: String = "") {
       val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
       run {
-        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.install_referrer.InstallReferrerInternalAPI.detectReferrer$separatedMessageChannelSuffix", codec)
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$separatedMessageChannelSuffix", codec)
         if (api != null) {
           channel.setMessageHandler { _, reply ->
             api.detectReferrer{ result: Result<IRInstallationReferrer> ->
