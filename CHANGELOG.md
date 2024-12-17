@@ -1,3 +1,6 @@
+## 2.0.1
+* Improved description clarity and text grammar was corrected
+
 ## 2.0.0
 
 * Migrated from Java/Objective-C to modern Kotlin/Swift
@@ -10,8 +13,8 @@
 
 ## 1.2.0
 
-* Two Widgets (`InstallReferrerDetectorListener` and `InstallReferrerDetectorBuilder`) allows to get the result of `InstallReferrer.app` directly in your Widgets hierarchy 
- 
+* Two Widgets (`InstallReferrerDetectorListener` and `InstallReferrerDetectorBuilder`) allows to get the result of `InstallReferrer.app` directly in your Widgets hierarchy
+
 ## 1.1.0
 
 * Package name / App Id now available

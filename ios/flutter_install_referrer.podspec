@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_install_referrer'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'Detect from where your application was installed (Google Play, App Store, TestFlight…)'
   s.description      = <<-DESC
 Detect from where your application was installed (Google Play, App Store, TestFlight…)

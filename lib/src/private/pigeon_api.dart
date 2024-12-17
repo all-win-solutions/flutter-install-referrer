@@ -77,7 +77,6 @@ class IRInstallationReferrer {
   }
 }
 
-
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
   @override
@@ -85,16 +84,16 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
-    }    else if (value is IRInstallationType) {
+    } else if (value is IRInstallationType) {
       buffer.putUint8(129);
       writeValue(buffer, value.index);
-    }    else if (value is IRInstallationPlatform) {
+    } else if (value is IRInstallationPlatform) {
       buffer.putUint8(130);
       writeValue(buffer, value.index);
-    }    else if (value is IRPlatform) {
+    } else if (value is IRPlatform) {
       buffer.putUint8(131);
       writeValue(buffer, value.index);
-    }    else if (value is IRInstallationReferrer) {
+    } else if (value is IRInstallationReferrer) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
     } else {
@@ -105,16 +104,16 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
-      case 129: 
+      case 129:
         final int? value = readValue(buffer) as int?;
         return value == null ? null : IRInstallationType.values[value];
-      case 130: 
+      case 130:
         final int? value = readValue(buffer) as int?;
         return value == null ? null : IRInstallationPlatform.values[value];
-      case 131: 
+      case 131:
         final int? value = readValue(buffer) as int?;
         return value == null ? null : IRPlatform.values[value];
-      case 132: 
+      case 132:
         return IRInstallationReferrer.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
@@ -126,9 +125,11 @@ class InstallReferrerInternalAPI {
   /// Constructor for [InstallReferrerInternalAPI].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  InstallReferrerInternalAPI({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+  InstallReferrerInternalAPI(
+      {BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
       : pigeonVar_binaryMessenger = binaryMessenger,
-        pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+        pigeonVar_messageChannelSuffix =
+            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
@@ -136,8 +137,10 @@ class InstallReferrerInternalAPI {
   final String pigeonVar_messageChannelSuffix;
 
   Future<IRInstallationReferrer> detectReferrer() async {
-    final String pigeonVar_channelName = 'dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$pigeonVar_messageChannelSuffix';
-    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+    final String pigeonVar_channelName =
+        'dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$pigeonVar_messageChannelSuffix';
+    final BasicMessageChannel<Object?> pigeonVar_channel =
+        BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,

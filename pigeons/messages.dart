@@ -3,12 +3,12 @@ import 'package:pigeon/pigeon.dart';
 @ConfigurePigeon(
   PigeonOptions(
       kotlinOptions: KotlinOptions(
-        package: 'com.allwinsolutions.flutter_install_referrer'
-      ),
+          package: 'com.allwinsolutions.flutter_install_referrer'),
       swiftOptions: SwiftOptions(),
       dartOptions: DartOptions(),
       dartOut: './lib/src/private/pigeon_api.dart',
-      swiftOut: 'ios/flutter_install_referrer/Sources/flutter_install_referrer/SwiftInstallReferrerPigeon.swift',
+      swiftOut:
+          'ios/flutter_install_referrer/Sources/flutter_install_referrer/SwiftInstallReferrerPigeon.swift',
       kotlinOut:
           './android/src/main/kotlin/com/allwinsolutions/flutter_install_referrer/InstallReferrerPigeon.kt'),
 )
