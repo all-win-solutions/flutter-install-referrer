@@ -7,6 +7,8 @@ class InstallReferrer {
   static late final InstallReferrerInternalAPI _api =
       InstallReferrerInternalAPI();
 
+  static InstallationAppReferrer? _cachedReferrer;
+
   /// Provide app information with:
   /// - Package name / app id
   /// - Installation referred
@@ -25,9 +27,11 @@ class InstallReferrer {
   ///
   /// On Android, system apps are only recognized, otherwise they will be
   /// considered as manual installation
-  static Future<InstallationAppReferrer> get referrer async {
-    return _extractReferrer(await _api.detectReferrer());
+    static Future<InstallationAppReferrer> get referrer async {
+    _cachedReferrer = _extractReferrer(_cachedReferrer?? await _api.detectReferrer());
+    return _cachedReferrer!;
   }
+}
 
   static InstallationAppReferrer _extractReferrer(
     IRInstallationReferrer referrer,
