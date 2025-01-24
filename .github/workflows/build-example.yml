@@ -1,0 +1,34 @@
+name: Build example project
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+on:
+  pull_request:
+
+jobs:
+  build-example-project:
+    runs-on: macos-latest
+    env:
+      example-directory: ./example
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Make sure the stable version of Flutter is available
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+
+      # Download all Flutter packages
+      - name: Download dependencies
+        run: flutter pub get
+
+      # Build Android version of the example App
+      - name: Run Android build
+        run: flutter build apk --release
+        working-directory: ${{ env.example-directory }}
+
+      # Build iOS version of the example App
+      - name: Run iOS build
+        run: flutter build ios --release --no-codesign
+        working-directory: ${{ env.example-directory }}
