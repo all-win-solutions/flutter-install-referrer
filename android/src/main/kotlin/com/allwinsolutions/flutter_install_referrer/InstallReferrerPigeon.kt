@@ -18,30 +18,26 @@ private fun wrapResult(result: Any?): List<Any?> {
 
 private fun wrapError(exception: Throwable): List<Any?> {
   return if (exception is FlutterError) {
-    listOf(
-      exception.code,
-      exception.message,
-      exception.details
-    )
+    listOf(exception.code, exception.message, exception.details)
   } else {
     listOf(
-      exception.javaClass.simpleName,
-      exception.toString(),
-      "Cause: " + exception.cause + ", Stacktrace: " + Log.getStackTraceString(exception)
-    )
+        exception.javaClass.simpleName,
+        exception.toString(),
+        "Cause: " + exception.cause + ", Stacktrace: " + Log.getStackTraceString(exception))
   }
 }
 
 /**
  * Error class for passing custom error details to Flutter via a thrown PlatformException.
+ *
  * @property code The error code.
  * @property message The error message.
  * @property details The error details. Must be a datatype supported by the api codec.
  */
-class FlutterError (
-  val code: String,
-  override val message: String? = null,
-  val details: Any? = null
+class FlutterError(
+    val code: String,
+    override val message: String? = null,
+    val details: Any? = null
 ) : Throwable()
 
 enum class IRInstallationType(val raw: Int) {
@@ -89,13 +85,12 @@ enum class IRPlatform(val raw: Int) {
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class IRInstallationReferrer (
-  val type: IRInstallationType? = null,
-  val installationPlatform: IRInstallationPlatform? = null,
-  val platform: IRPlatform? = null,
-  val packageName: String? = null
-)
- {
+data class IRInstallationReferrer(
+    val type: IRInstallationType? = null,
+    val installationPlatform: IRInstallationPlatform? = null,
+    val platform: IRPlatform? = null,
+    val packageName: String? = null
+) {
   companion object {
     fun fromList(pigeonVar_list: List<Any?>): IRInstallationReferrer {
       val type = pigeonVar_list[0] as IRInstallationType?
@@ -105,42 +100,37 @@ data class IRInstallationReferrer (
       return IRInstallationReferrer(type, installationPlatform, platform, packageName)
     }
   }
+
   fun toList(): List<Any?> {
     return listOf(
-      type,
-      installationPlatform,
-      platform,
-      packageName,
+        type,
+        installationPlatform,
+        platform,
+        packageName,
     )
   }
 }
+
 private open class InstallReferrerPigeonPigeonCodec : StandardMessageCodec() {
   override fun readValueOfType(type: Byte, buffer: ByteBuffer): Any? {
     return when (type) {
       129.toByte() -> {
-        return (readValue(buffer) as Long?)?.let {
-          IRInstallationType.ofRaw(it.toInt())
-        }
+        return (readValue(buffer) as Long?)?.let { IRInstallationType.ofRaw(it.toInt()) }
       }
       130.toByte() -> {
-        return (readValue(buffer) as Long?)?.let {
-          IRInstallationPlatform.ofRaw(it.toInt())
-        }
+        return (readValue(buffer) as Long?)?.let { IRInstallationPlatform.ofRaw(it.toInt()) }
       }
       131.toByte() -> {
-        return (readValue(buffer) as Long?)?.let {
-          IRPlatform.ofRaw(it.toInt())
-        }
+        return (readValue(buffer) as Long?)?.let { IRPlatform.ofRaw(it.toInt()) }
       }
       132.toByte() -> {
-        return (readValue(buffer) as? List<Any?>)?.let {
-          IRInstallationReferrer.fromList(it)
-        }
+        return (readValue(buffer) as? List<Any?>)?.let { IRInstallationReferrer.fromList(it) }
       }
       else -> super.readValueOfType(type, buffer)
     }
   }
-  override fun writeValue(stream: ByteArrayOutputStream, value: Any?)   {
+
+  override fun writeValue(stream: ByteArrayOutputStream, value: Any?) {
     when (value) {
       is IRInstallationType -> {
         stream.write(129)
@@ -163,25 +153,35 @@ private open class InstallReferrerPigeonPigeonCodec : StandardMessageCodec() {
   }
 }
 
-
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface InstallReferrerInternalAPI {
   fun detectReferrer(callback: (Result<IRInstallationReferrer>) -> Unit)
 
   companion object {
     /** The codec used by InstallReferrerInternalAPI. */
-    val codec: MessageCodec<Any?> by lazy {
-      InstallReferrerPigeonPigeonCodec()
-    }
-    /** Sets up an instance of `InstallReferrerInternalAPI` to handle messages through the `binaryMessenger`. */
+    val codec: MessageCodec<Any?> by lazy { InstallReferrerPigeonPigeonCodec() }
+
+    /**
+     * Sets up an instance of `InstallReferrerInternalAPI` to handle messages through the
+     * `binaryMessenger`.
+     */
     @JvmOverloads
-    fun setUp(binaryMessenger: BinaryMessenger, api: InstallReferrerInternalAPI?, messageChannelSuffix: String = "") {
-      val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
+    fun setUp(
+        binaryMessenger: BinaryMessenger,
+        api: InstallReferrerInternalAPI?,
+        messageChannelSuffix: String = ""
+    ) {
+      val separatedMessageChannelSuffix =
+          if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
       run {
-        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$separatedMessageChannelSuffix", codec)
+        val channel =
+            BasicMessageChannel<Any?>(
+                binaryMessenger,
+                "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer$separatedMessageChannelSuffix",
+                codec)
         if (api != null) {
           channel.setMessageHandler { _, reply ->
-            api.detectReferrer{ result: Result<IRInstallationReferrer> ->
+            api.detectReferrer { result: Result<IRInstallationReferrer> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))

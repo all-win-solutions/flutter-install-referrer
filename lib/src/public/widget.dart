@@ -7,8 +7,8 @@ class InstallReferrerDetectorBuilder extends StatelessWidget {
 
   const InstallReferrerDetectorBuilder({
     required this.builder,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class InstallReferrerDetectorListener extends StatefulWidget {
   const InstallReferrerDetectorListener({
     required this.child,
     required this.onReferrerAvailable,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<InstallReferrerDetectorListener> createState() =>

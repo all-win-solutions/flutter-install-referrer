@@ -4,8 +4,7 @@ import '../private/pigeon_api.dart';
 
 /// Detect which application (or store) installed an Android or iOS application
 class InstallReferrer {
-  static late final InstallReferrerInternalAPI _api =
-      InstallReferrerInternalAPI();
+  static final InstallReferrerInternalAPI _api = InstallReferrerInternalAPI();
 
   static InstallationAppReferrer? _cachedReferrer;
 
@@ -28,7 +27,8 @@ class InstallReferrer {
   /// On Android, system apps are only recognized, otherwise they will be
   /// considered as manual installation
   static Future<InstallationAppReferrer> get referrer async {
-    _cachedReferrer = _extractReferrer(_cachedReferrer?? await _api.detectReferrer());
+    _cachedReferrer =
+        _cachedReferrer ?? _extractReferrer(await _api.detectReferrer());
     return _cachedReferrer!;
   }
 
