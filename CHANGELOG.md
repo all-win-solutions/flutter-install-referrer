@@ -1,4 +1,9 @@
+## 2.0.2
+
+* Adds caching for app referrer.
+
 ## 2.0.1
+
 * Improved description clarity and text grammar was corrected
 
 ## 2.0.0

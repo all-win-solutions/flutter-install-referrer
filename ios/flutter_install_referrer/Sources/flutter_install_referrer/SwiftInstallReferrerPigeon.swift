@@ -26,7 +26,7 @@ final class PigeonError: Error {
   var localizedDescription: String {
     return
       "PigeonError(code: \(code), message: \(message ?? "<nil>"), details: \(details ?? "<nil>")"
-      }
+  }
 }
 
 private func wrapResult(_ result: Any?) -> [Any?] {
@@ -96,8 +96,6 @@ struct IRInstallationReferrer {
   var installationPlatform: IRInstallationPlatform? = nil
   var platform: IRPlatform? = nil
   var packageName: String? = nil
-
-
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> IRInstallationReferrer? {
@@ -183,9 +181,9 @@ private class SwiftInstallReferrerPigeonPigeonCodecReaderWriter: FlutterStandard
 }
 
 class SwiftInstallReferrerPigeonPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
-  static let shared = SwiftInstallReferrerPigeonPigeonCodec(readerWriter: SwiftInstallReferrerPigeonPigeonCodecReaderWriter())
+  static let shared = SwiftInstallReferrerPigeonPigeonCodec(
+    readerWriter: SwiftInstallReferrerPigeonPigeonCodecReaderWriter())
 }
-
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol InstallReferrerInternalAPI {
@@ -196,9 +194,15 @@ protocol InstallReferrerInternalAPI {
 class InstallReferrerInternalAPISetup {
   static var codec: FlutterStandardMessageCodec { SwiftInstallReferrerPigeonPigeonCodec.shared }
   /// Sets up an instance of `InstallReferrerInternalAPI` to handle messages through the `binaryMessenger`.
-  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: InstallReferrerInternalAPI?, messageChannelSuffix: String = "") {
+  static func setUp(
+    binaryMessenger: FlutterBinaryMessenger, api: InstallReferrerInternalAPI?,
+    messageChannelSuffix: String = ""
+  ) {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
-    let detectReferrerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    let detectReferrerChannel = FlutterBasicMessageChannel(
+      name:
+        "dev.flutter.pigeon.flutter_install_referrer.InstallReferrerInternalAPI.detectReferrer\(channelSuffix)",
+      binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       detectReferrerChannel.setMessageHandler { _, reply in
         api.detectReferrer { result in
