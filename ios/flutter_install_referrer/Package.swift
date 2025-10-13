@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
   name: "flutter_install_referrer",
   platforms: [
-    .iOS("12.0")
+    .iOS("13.0")
   ],
   products: [
     .library(name: "flutter-install-referrer", targets: ["flutter_install_referrer"])

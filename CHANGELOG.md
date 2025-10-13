@@ -1,3 +1,9 @@
+## 2.1.0
+
+* Updates Flutter and dependencies, bumps iOS minimum to 13.0
+* Upgrades Flutter SDK and related dependencies to latest versions
+* Regenerates Pigeon interfaces for improved type safety and equality
+
 ## 2.0.2
 
 * Adds caching for app referrer.
