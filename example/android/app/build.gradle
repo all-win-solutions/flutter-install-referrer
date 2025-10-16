@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.install_referrer_example"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
