@@ -1,3 +1,7 @@
+## 2.1.1
+
+* Upgrades Flutter SDK and related dependencies to latest versions
+
 ## 2.1.0
 
 * Updates Flutter and dependencies, bumps iOS minimum to 13.0
