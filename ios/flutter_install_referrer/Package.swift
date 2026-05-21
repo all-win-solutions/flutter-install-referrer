@@ -10,11 +10,15 @@ let package = Package(
   products: [
     .library(name: "flutter-install-referrer", targets: ["flutter_install_referrer"])
   ],
-  dependencies: [],
+  dependencies: [
+    .package(name: "FlutterFramework", path: "../FlutterFramework")
+  ],
   targets: [
     .target(
       name: "flutter_install_referrer",
-      dependencies: [],
+      dependencies: [
+        .product(name: "FlutterFramework", package: "FlutterFramework")
+      ],
       resources: []
     )
   ]
