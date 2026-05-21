@@ -5,10 +5,7 @@ class InstallationApp {
   final String? packageName;
   final InstallationAppReferrer referrer;
 
-  InstallationApp({
-    required this.packageName,
-    required this.referrer,
-  });
+  InstallationApp({required this.packageName, required this.referrer});
 
   @override
   String toString() {

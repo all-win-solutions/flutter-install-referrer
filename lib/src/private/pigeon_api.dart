@@ -18,24 +18,22 @@ PlatformException _createConnectionError(String channelName) {
 bool _deepEquals(Object? a, Object? b) {
   if (a is List && b is List) {
     return a.length == b.length &&
-        a.indexed
-            .every(((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]));
+        a.indexed.every(
+          ((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]),
+        );
   }
   if (a is Map && b is Map) {
     return a.length == b.length &&
-        a.entries.every((MapEntry<Object?, Object?> entry) =>
-            (b as Map<Object?, Object?>).containsKey(entry.key) &&
-            _deepEquals(entry.value, b[entry.key]));
+        a.entries.every(
+          (MapEntry<Object?, Object?> entry) =>
+              (b as Map<Object?, Object?>).containsKey(entry.key) &&
+              _deepEquals(entry.value, b[entry.key]),
+        );
   }
   return a == b;
 }
 
-enum IRInstallationType {
-  appStore,
-  test,
-  debug,
-  unknown,
-}
+enum IRInstallationType { appStore, test, debug, unknown }
 
 enum IRInstallationPlatform {
   appleAppStore,
@@ -51,10 +49,7 @@ enum IRInstallationPlatform {
   unknown,
 }
 
-enum IRPlatform {
-  ios,
-  android,
-}
+enum IRPlatform { ios, android }
 
 class IRInstallationReferrer {
   IRInstallationReferrer({
@@ -73,12 +68,7 @@ class IRInstallationReferrer {
   String? packageName;
 
   List<Object?> _toList() {
-    return <Object?>[
-      type,
-      installationPlatform,
-      platform,
-      packageName,
-    ];
+    return <Object?>[type, installationPlatform, platform, packageName];
   }
 
   Object encode() {
@@ -160,11 +150,13 @@ class InstallReferrerInternalAPI {
   /// Constructor for [InstallReferrerInternalAPI].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  InstallReferrerInternalAPI(
-      {BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
-      : pigeonVar_binaryMessenger = binaryMessenger,
-        pigeonVar_messageChannelSuffix =
-            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+  InstallReferrerInternalAPI({
+    BinaryMessenger? binaryMessenger,
+    String messageChannelSuffix = '',
+  }) : pigeonVar_binaryMessenger = binaryMessenger,
+       pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty
+           ? '.$messageChannelSuffix'
+           : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();

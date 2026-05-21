@@ -16,9 +16,7 @@ class InstallReferrer {
 
     return InstallationApp(
       packageName: referrer.packageName,
-      referrer: _extractReferrer(
-        referrer,
-      ),
+      referrer: _extractReferrer(referrer),
     );
   }
 
@@ -37,18 +35,11 @@ class InstallReferrer {
   ) {
     switch (referrer.platform) {
       case IRPlatform.ios:
-        return _iOSReferrer(
-          referrer.installationPlatform,
-        );
+        return _iOSReferrer(referrer.installationPlatform);
       case IRPlatform.android:
-        return _androidReferrer(
-          referrer.installationPlatform,
-          referrer.type,
-        );
+        return _androidReferrer(referrer.installationPlatform, referrer.type);
       default:
-        throw UnsupportedError(
-          'Unsupported platform ${referrer.platform}',
-        );
+        throw UnsupportedError('Unsupported platform ${referrer.platform}');
     }
   }
 
