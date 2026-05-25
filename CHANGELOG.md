@@ -1,3 +1,12 @@
+## 3.0.0
+
+* **BREAKING**: Updates minimum supported SDK version to Flutter 3.44 / Dart 3.12.
+* **BREAKING**: Raises Android `minSdk` from 21 to 24.
+* Migrates to built-in Kotlin (removes `kotlin-android` plugin, moves `jvmTarget` to top-level `kotlin { compilerOptions { } }` block).
+* Migrates Android Gradle scripts to Kotlin DSL (`build.gradle.kts`, `settings.gradle.kts`).
+* Bumps Android Gradle Plugin to 9.0.1 and Kotlin to 2.3.20.
+* Bumps `compileSdk` to 36 and Java toolchain to 17.
+
 ## 2.1.1
 
 * Upgrades Flutter SDK and related dependencies to latest versions

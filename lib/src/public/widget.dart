@@ -5,10 +5,7 @@ import 'package:flutter_install_referrer/flutter_install_referrer.dart';
 class InstallReferrerDetectorBuilder extends StatelessWidget {
   final InstallReferrerDetectorWidgetBuilder builder;
 
-  const InstallReferrerDetectorBuilder({
-    required this.builder,
-    super.key,
-  });
+  const InstallReferrerDetectorBuilder({required this.builder, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,11 +88,8 @@ class _InstallReferrerDetectorListenerState
   }
 }
 
-typedef InstallReferrerDetectorWidgetBuilder = Widget Function(
-  BuildContext context,
-  InstallationApp? referrer,
-);
+typedef InstallReferrerDetectorWidgetBuilder =
+    Widget Function(BuildContext context, InstallationApp? referrer);
 
-typedef InstallReferrerDetectorWidgetListener = void Function(
-  InstallationApp referrer,
-);
+typedef InstallReferrerDetectorWidgetListener =
+    void Function(InstallationApp referrer);
