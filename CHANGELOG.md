@@ -1,3 +1,7 @@
+## 3.0.1
+
+* Bumps `pigeon` to 28.0.0 and regenerates the platform interfaces; the Android and iOS host APIs are now coroutine/async based.
+
 ## 3.0.0
 
 * **BREAKING**: Updates minimum supported SDK version to Flutter 3.44 / Dart 3.12.
