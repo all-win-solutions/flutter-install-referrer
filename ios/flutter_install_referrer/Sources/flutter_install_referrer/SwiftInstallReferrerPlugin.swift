@@ -19,7 +19,7 @@ final class SwiftInstallReferrerPlugin: NSObject, FlutterPlugin, InstallReferrer
     InstallReferrerInternalAPISetup.setUp(binaryMessenger: messenger, api: api)
   }
 
-  func detectReferrer(completion: @escaping (Result<IRInstallationReferrer, Error>) -> Void) {
+  func detectReferrer() async throws -> IRInstallationReferrer {
     var installationReferrer = IRInstallationReferrer(
       type: .appStore,
       installationPlatform: .appleAppStore,
@@ -35,6 +35,6 @@ final class SwiftInstallReferrerPlugin: NSObject, FlutterPlugin, InstallReferrer
       installationReferrer.installationPlatform = .appleTestflight
     }
 
-    completion(.success(installationReferrer))
+    return installationReferrer
   }
 }
