@@ -1,6 +1,7 @@
 ## 3.0.1
 
 * Bumps `pigeon` to 28.0.0 and regenerates the platform interfaces; the Android and iOS host APIs are now coroutine/async based.
+* Adds `meta` to `dependencies`, as the pigeon 28 generated code imports it.
 
 ## 3.0.0
 
